@@ -1,7 +1,11 @@
 function Navbar() {
+
+	const currentDate = new Date().toDateString();
+
   return (
-    <div>
-			<p className="text-sm">This is Navbar</p>
+    <div className="mt-5 flex flex-row justify-center text-sm space-x-72 p-2 ">
+			<p className="font-semibold">todo.</p>
+			<p className="italic">{currentDate}</p>
     </div>
   )
 }
