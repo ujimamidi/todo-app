@@ -1,10 +1,11 @@
+import AddTodo from "../components/AddTodo";
 import Navbar from "../components/Navbar"
 
 function Landing() {
   return (
-    <div className="flex flex-col justify-center align-center text-center">
+    <div className="flex flex-col justify-center text-center">
       <Navbar />
-      <h1>Landing Page</h1>
+      <AddTodo />
     </div>
  )
 }
