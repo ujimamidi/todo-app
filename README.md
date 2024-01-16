@@ -4,4 +4,13 @@
 <sub>made by uji.</sub>
 
 The project is built using ***Create React App** and **TailwindCSS***.
-### How to run the project
+
+### Viewing the App Online:
+The link to the website: 
+
+### Running the Project Locally:
+To run the application locally:
++ `git clone` the project
++ `cd` into `todo-app`
++ Run `npm install`
++ Run `npm start`
