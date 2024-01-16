@@ -11,6 +11,11 @@ function AddTodo() {
     setToDo("");  
   }
 
+  const handleRemoveTodo = (removedTodo) => {
+
+    setTodoList((prevTodoList) => prevTodoList.filter(todo => todo !== removedTodo));
+  }
+
   // testing purposes only
   useEffect(() => {
     console.log("Updated Todo List:", todoList);
@@ -28,14 +33,15 @@ function AddTodo() {
         />
         <button 
           type="submit"
-          className="border-white bg-black border-2 rounded-lg mx-2 px-3 text-white" 
+          className="border-white bg-black border-2 rounded-lg mx-2 px-3 text-white"
+          disabled={todo.trim() === ""}
         >
           ✚
         </button>
       </form>
 
       {/* Display todos */}
-      <TodoList todos={todoList} />
+      <TodoList todos={todoList} onRemove={handleRemoveTodo}/>
     </div>
   )
 }
