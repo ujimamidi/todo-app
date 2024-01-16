@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 
 function AddTodo() {
@@ -7,9 +7,14 @@ function AddTodo() {
 
   const handleAddTodo = (e) => {
     e.preventDefault();
-    setTodoList([...todoList, todo]);
+    setTodoList((prevTodoList) => [...prevTodoList, todo]);
     setToDo("");  
   }
+
+  // testing purposes only
+  useEffect(() => {
+    console.log("Updated Todo List:", todoList);
+  }, [todoList]);
 
   return (
     <div className="mt-1">
