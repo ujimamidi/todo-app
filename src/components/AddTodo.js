@@ -5,15 +5,30 @@ function AddTodo() {
   const [todo, setToDo] = useState("");
   const [todoList, setTodoList] = useState([]);
 
+  useEffect(() => {
+    // Load todos from local storage on component mount
+    const savedTodos = JSON.parse(localStorage.getItem("todos"));
+    if (savedTodos) {
+      setTodoList(savedTodos);
+    }
+  }, [])
+
   const handleAddTodo = (e) => {
     e.preventDefault();
-    setTodoList((prevTodoList) => [...prevTodoList, todo]);
+    setTodoList((prevTodoList) => {
+      const updatedTodoList = [...prevTodoList, todo];
+      localStorage.setItem("todos", JSON.stringify(updatedTodoList));
+      return updatedTodoList;
+    });
     setToDo("");  
   }
 
   const handleRemoveTodo = (removedTodo) => {
-
-    setTodoList((prevTodoList) => prevTodoList.filter(todo => todo !== removedTodo));
+    setTodoList((prevTodoList) => {
+      const updatedTodoList = prevTodoList.filter(todo => todo !== removedTodo)
+      localStorage.setItem("todos", JSON.stringify(updatedTodoList));
+      return updatedTodoList;
+    });
   }
 
   // testing purposes only
@@ -25,7 +40,7 @@ function AddTodo() {
     <div className="mt-1">
       <form onSubmit={handleAddTodo}>
         <input 
-          className="border-black border-2 rounded-lg w-80 px-1 py-0.5" 
+          className="border-black border-2 rounded-lg w-80 px-2 py-0.5" 
           type="text"
           value={todo}
           placeholder="enter activity"
